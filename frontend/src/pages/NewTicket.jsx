@@ -9,12 +9,12 @@ import BackButton from '../components/BackButton';
 function NewTicket() {
   const { user } = useSelector((state) => state.auth);
   const { isLoading, isError, isSuccess, message } = useSelector(
-    (state) => state.ticket
+    (state) => state.tickets
   );
 
   const [name] = useState(user.name);
   const [email] = useState(user.email);
-  const [product, setProduct] = useState('');
+  const [product, setProduct] = useState('iPhone');
   const [description, setDescription] = useState('');
 
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ function NewTicket() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(createTicket({ product, description }));
+    dispatch(createTicket({ product: product, description: description }));
   };
 
   if (isLoading) {
