@@ -40,6 +40,11 @@ const createNote = asyncHandler(async (req, res) => {
     throw new Error('User not found');
   }
 
+  if (!req.body.text || req.body.text === '') {
+    res.status(400);
+    throw new Error('Please enter note text');
+  }
+
   const ticket = await Ticket.findById(req.params.ticketId);
 
   if (ticket.user.toString() !== req.user.id) {
