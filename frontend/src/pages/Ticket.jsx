@@ -33,18 +33,21 @@ function Ticket() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [noteText, setNoteText] = useState('');
 
+  // eslint-disable-next-line
   const { ticket, isLoading, isSuccess, isError, message } = useSelector(
     (state) => state.tickets
   );
   const {
     notes,
     isLoading: notesIsLoading,
+    // eslint-disable-next-line
     isSuccess: notesIsSuccess,
     isError: notesIsError,
     message: notesMessage,
   } = useSelector((state) => state.notes);
 
   const dispatch = useDispatch();
+  // eslint-disable-next-line
   const params = useParams();
   const navigate = useNavigate();
   const { ticketId } = useParams();
